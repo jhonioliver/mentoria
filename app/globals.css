@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: #0a0a0a;
+  background: #f9fafb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.appear {
+  animation: appear 300ms ease-in forwards;
+}
+
+.pulse {
+  animation: pulse 1s infinite;
+}
+
+#inline_checkout .custom-element__iframe {
+  margin: -10rem 0 0 0;
+}
+
+.custom-element__iframe {
+  overflow: hidden !important;
+}
+
+.hotmartCheckout .custom-element__iframe {
+  margin: 4rem 0 0 0; /*  UPSELL BLACK */
+}
+
+/* ANIMATIONS */
+
+@keyframes appear {
+  0%      { opacity: 0%; }
+  100%    { opacity: 100%; }
+}
+
+@keyframes pulse {
+  0%      { transform:scale(.98) }
+  50%     { transform:scale(1.02) }
+  100%    { transform:scale(.98) }
+}
