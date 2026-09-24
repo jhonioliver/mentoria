@@ -26,9 +26,9 @@ export default async function Layout({
 
   if (userLayer === 2) {
     // Gray - intermediário
-    redirect('https://jhonioliver.com/bio');
+    redirect('https://jhonioliver.com/basico');
   }
 
   // White - bots / sem parâmetro
-  redirect('https://jhonioliver.com/bio');
+  redirect('https://jhonioliver.com/basico');
 }
