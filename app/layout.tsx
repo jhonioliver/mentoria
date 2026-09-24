@@ -4,8 +4,8 @@ import { headers, cookies } from 'next/headers';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Mentoria Jhoni',
-  description: 'Acompanhamento Exclusivo',
+  title: 'Jhoni',
+  description: '@ojhonioliver',
 };
 
 export default async function Layout({
@@ -17,18 +17,26 @@ export default async function Layout({
   const hdrs = await headers();
 
   const userLayer = await getUserLayer({ cks, hdrs });
+  const content = cks.get('xcat_valid')?.value || '';
 
-  // === REDIRECTS POR CAMADA ===
+  // === BLACK - URLs diferentes por parâmetro ===
   if (userLayer === 3) {
-    // Black - tráfego limpo
-    redirect('https://jhonioliver.com/mentoria');
+    const blackUrls: Record<string, string> = {
+      mentoria:  'https://jhonioliver.com/mentoria',
+      blackroom: 'https://jhonioliver.com/blackroom',
+      mra:       'https://jhonioliver.com/mra',
+      tsv:       'https://jhonioliver.com/tsv',
+    };
+
+    const target = blackUrls[content] || 'https://jhonioliver.com/mentoria';
+    redirect(target);
   }
 
+  // === GRAY ===
   if (userLayer === 2) {
-    // Gray - intermediário
     redirect('https://jhonioliver.com/basico');
   }
 
-  // White - bots / sem parâmetro
+  // === WHITE ===
   redirect('https://jhonioliver.com/basico');
 }
